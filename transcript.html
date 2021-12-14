@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title> Transcript: Make Learning Easy:Summary</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="icon" href="data:;base64,=">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/all.min.css') }}">
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='slick/slick.css') }}">
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='slick/slick-theme.css') }}">
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/magnific-popup.css') }}">
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/templatemo-dream-pulse.css') }}">
+   
+  </head>
+ 
+ 
+  
+
+    <body style="background-color:lightgrey;">
+    <main class="container-fluid">
+          
+          <main role="main" class="ml-sm-auto col-12">
+           
+            
+                
+                 
+                        <h2 style="color:blue;text-align:center;"> Transcript generated</h2>
+                        
+                        <p style="color:brown;"><b>
+                         {{data}}
+                         
+                         </b>
+                        </p>
+                        <div style="text-align:center">
+                        <input id="inputFile" value="{{data}}"></input>
+        
+                      <button id="saveFile" class="btn tm-btn-primary" style="align:centre;color:brown">
+                        Save Trancript to File
+                      </button>
+                      
+    
+                      </div>
+                      <br><br>
+                      <div style="text-align:center">
+                          <form method= "POST" action = "/getTopic/" enctype="multipart/form-data" accept=".txt">
+                              <input id="inputFileTopic" name="inputFileTopic" value="{{data}}"></input>
+              
+                            <button id="saveFileTopic" class="btn tm-btn-primary" style="align:centre;color:brown">
+                              Generate Topic for the video
+                            </button>
+                        </form>
+                    </div>
+                    
+                      <br><br>
+                      
+                      
+                      <h3 style="color:blue;text-align:center;"> Upload your saved transcript file(.txt) to get summaries.
+                      </h3>
+                      <br><br>
+                      
+                        <div style="text-align:center">
+                          <form method= "POST" action = "/submitTranscript/" enctype="multipart/form-data" accept=".txt">
+                              
+                                <input type="file" name = "txt_file" id="txtFile" enctype="multipart/form-data" accept=".txt"> 
+                              
+                              <button type="submit" id="submitText"  class="btn tm-btn-primary" style="align:centre;color:brown">
+                                Click here to SUBMIT text file
+                              </button>
+                              </form>
+                              
+                              </div>
+                           
+                      
+                    
+    <script type="text/javascript">
+           window.onload = function(){
+           document.getElementById("saveFile").onclick=function(){
+       var text = document.getElementById('inputFile').value;
+      
+      
+       
+       
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', 'transcript.txt');
+        
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        
+        element.click();
+        
+        document.body.removeChild(element);
+    }
+}
+          
+       </script>
+    </main>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.singlePageNav.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/parallax.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='slick/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/templatemo-scripts.js') }}"></script>
+    
+
+</main>
+  </body>
+  
+</html>
